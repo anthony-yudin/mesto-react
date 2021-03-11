@@ -1,4 +1,6 @@
-function Card({card, onCardClick}) {
+import React from "react";
+
+function Card({card, onCardClick, onCardDelete}) {
   function handleClick() {
     onCardClick(card);
   }
@@ -13,6 +15,7 @@ function Card({card, onCardClick}) {
           <div className="card__like-count">{card.likes.length}</div>
         </div>
       </div>
+      <div className="card__delete" onClick={onCardDelete}/>
     </article>
   )
 }

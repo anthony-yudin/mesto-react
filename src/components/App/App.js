@@ -9,7 +9,7 @@ import api from '../../utils/api';
 import EditProfilePopup from '../EditProfilePopup/EditProfilePopup';
 import EditAvatarPopup from '../EditAvatarPopup/EditAvatarPopup';
 import AddPlacePopup from '../AddPlacePopup/AddPlacePopup';
-import DeletePopup from '../deletePopup/DeletePopup';
+import DeletePopup from '../DeletePopup/DeletePopup';
 
 function App() {
   // Установка стейтов попапов

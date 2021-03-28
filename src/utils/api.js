@@ -19,7 +19,7 @@ class Api {
       .then(res => this._checkPromise(res))
   }
 
-  _initialCards() {
+  _getCardList() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers
     })
@@ -27,12 +27,12 @@ class Api {
   }
 
   initialPage() {
-    const promises = [this._getUser(), this._initialCards()];
+    const promises = [this._getUser(), this._getCardList()];
 
     return Promise.all(promises);
   }
 
-  updateProfile(data) {
+  setUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
@@ -61,19 +61,26 @@ class Api {
       method: 'DELETE',
       headers: this._headers
     })
-      .then(res => this._checkPromise(res))
-      .then(() => document.getElementById(id).remove())
+      .then(res => this._checkPromise(res));
   }
 
-  setLike(id) {
+  changeLikeCardStatus(id, isLiked) {
+    if (isLiked) {
+      return this._removeLike(id);
+    } else {
+      return this._setLike(id);
+    }
+  }
+
+  _setLike(id) {
     return fetch(`${this._baseUrl}/cards/likes/${id}`, {
       method: 'PUT',
       headers: this._headers
     })
-      .then(res => this._checkPromise(res))
+      .then(res => this._checkPromise(res));
   }
 
-  removeLike(id) {
+  _removeLike(id) {
     return fetch(`${this._baseUrl}/cards/likes/${id}`, {
       method: 'DELETE',
       headers: this._headers
@@ -89,8 +96,7 @@ class Api {
         avatar: data.avatar
       })
     })
-      .then(res => this._checkPromise(res))
-      .then(() => console.log(data.avatar));
+      .then(res => this._checkPromise(res));
   }
 }
 

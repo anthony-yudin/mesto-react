@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function PopupWithForm({handleClickClose, onClose, isOpen, name, title, children}) {
+function PopupWithForm({handleClickClose, onClose, isOpen, name, title, onSubmit, children}) {
   React.useEffect(() => {
     if (!isOpen) return;
     const handleEscapeClose = (event) => {
@@ -9,6 +9,7 @@ function PopupWithForm({handleClickClose, onClose, isOpen, name, title, children
       }
     };
     document.addEventListener("keydown", handleEscapeClose);
+
     return () => {
       document.removeEventListener("keydown", handleEscapeClose);
     };
@@ -17,7 +18,7 @@ function PopupWithForm({handleClickClose, onClose, isOpen, name, title, children
   return (
     <div onClick={handleClickClose} className={`popup${isOpen ? ' popup_opened' : ''} popup_type_${name}`}>
       <div className="popup__container">
-        <form className={`popup__form popup__form_type_${name}`} method="post">
+        <form onSubmit={onSubmit} className={`popup__form popup__form_type_${name}`} method="post">
           <button type="button" className="popup__close" onClick={onClose}/>
           <h3 className="popup__title">{title}</h3>
           {children}

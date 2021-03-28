@@ -1,15 +1,15 @@
 import React from 'react';
-import Header from './Header/Header';
-import Main from './Main/Main';
-import Footer from './Footer/Footer';
-import ImagePopup from "./ImagePopup/ImagePopup";
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
+import ImagePopup from "./ImagePopup";
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { CardsContext } from '../contexts/CardsContext';
 import api from '../utils/api';
-import EditProfilePopup from './EditProfilePopup/EditProfilePopup';
-import EditAvatarPopup from './EditAvatarPopup/EditAvatarPopup';
-import AddPlacePopup from './AddPlacePopup/AddPlacePopup';
-import DeletePopup from './DeletePopup/DeletePopup';
+import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
+import AddPlacePopup from './AddPlacePopup';
+import DeletePopup from './DeletePopup';
 
 function App() {
   // Установка стейтов попапов

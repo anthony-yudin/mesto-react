@@ -42,22 +42,26 @@ function App() {
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api.changeLikeCardStatus(card._id, isLiked).then(newCard => {
       setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
-    });
+    })
+      .catch(err => console.log(err));
   }
 
   function handleUpdateUser(data) {
     api.setUserInfo(data).then(data => setCurrentUser(data))
-      .then(() => closeAllPopups());
+      .then(() => closeAllPopups())
+      .catch(err => console.log(err));
   }
 
   function handleUpdateAvatar(data) {
     api.updateAvatar(data).then(data => setCurrentUser(data))
-      .then(() => closeAllPopups());
+      .then(() => closeAllPopups())
+      .catch(err => console.log(err));
   }
 
   function handleAddPlaceSubmit(data) {
     api.sendCard(data).then(data => setCards([data, ...cards]))
-      .then(() => closeAllPopups());
+      .then(() => closeAllPopups())
+      .catch(err => console.log(err));
   }
 
   function handleCardDelete(id) {
@@ -66,7 +70,8 @@ function App() {
       .then(() => {
         setCards((state) => state.filter((currentCard) => currentCard._id !== id));
       })
-      .then(() => closeAllPopups());
+      .then(() => closeAllPopups())
+      .catch(err => console.log(err));
   }
 
   function onCardId(id) {
@@ -127,15 +132,15 @@ function App() {
             <Footer />
           </div>
 
-          <ImagePopup card={selectedCard} onClose={closeAllPopups} handleClickClose={handleClickClose}/>
+          <ImagePopup card={selectedCard} onClose={closeAllPopups} handleClickClose={handleClickClose} />
 
-          <EditProfilePopup handleClickClose={handleClickClose} isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
+          <EditProfilePopup handleClickClose={handleClickClose} isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} buttonText={'Сохранить'} />
 
-          <EditAvatarPopup handleClickClose={handleClickClose} isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
+          <EditAvatarPopup handleClickClose={handleClickClose} isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} buttonText={'Сохранить'} />
 
-          <AddPlacePopup handleClickClose={handleClickClose} isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit} />
+          <AddPlacePopup handleClickClose={handleClickClose} isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit} buttonText={'Создать'} />
 
-          <DeletePopup handleClickClose={handleClickClose} isOpen={isDeletePlacePopupOpen} onClose={closeAllPopups} onDelete={handleCardDelete} idCard={idCard} />
+          <DeletePopup handleClickClose={handleClickClose} isOpen={isDeletePlacePopupOpen} onClose={closeAllPopups} onDelete={handleCardDelete} idCard={idCard} buttonText={'Да'} />
 
         </div>
       </CardsContext.Provider>

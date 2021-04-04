@@ -1,7 +1,7 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm';
 
-function DeletePopup({handleClickClose, isOpen, onClose, onDelete, idCard}) {
+function DeletePopup({handleClickClose, isOpen, onClose, onDelete, idCard, buttonText}) {
 
   function handleSubmit(e) {
     // Запрещаем браузеру переходить по адресу формы
@@ -12,8 +12,7 @@ function DeletePopup({handleClickClose, isOpen, onClose, onDelete, idCard}) {
   }
 
   return (
-    <PopupWithForm onSubmit={handleSubmit} handleClickClose={handleClickClose} isOpen={isOpen} onClose={onClose} name="delete-confirm" title="Вы уверены?">
-      <button type="submit" className="popup__btn">Да</button>
+    <PopupWithForm onSubmit={handleSubmit} handleClickClose={handleClickClose} isOpen={isOpen} onClose={onClose} buttonText={buttonText} name="delete-confirm" title="Вы уверены?">
     </PopupWithForm>
   )
 }

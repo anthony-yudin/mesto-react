@@ -1,6 +1,6 @@
 import React from 'react';
 
-function PopupWithForm({handleClickClose, onClose, isOpen, name, title, onSubmit, children}) {
+function PopupWithForm({handleClickClose, onClose, isOpen, name, title, onSubmit, buttonText, children}) {
   React.useEffect(() => {
     if (!isOpen) return;
     const handleEscapeClose = (event) => {
@@ -22,6 +22,7 @@ function PopupWithForm({handleClickClose, onClose, isOpen, name, title, onSubmit
           <button type="button" className="popup__close" onClick={onClose}/>
           <h3 className="popup__title">{title}</h3>
           {children}
+          <button type="submit" className="popup__btn">{buttonText}</button>
         </form>
       </div>
     </div>

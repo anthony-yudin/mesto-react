@@ -6,6 +6,7 @@
 
 @import "blocks/header/header.css";
 @import "blocks/header/__logo/header__logo.css";
+@import "blocks/header/__href/header__href.css";
 
 @import "blocks/profile/profile.css";
 @import "blocks/profile/__img-box/profile__img-box.css";
@@ -45,3 +46,13 @@
 @import "blocks/popup/__container/_image/popup__container_image.css";
 @import "blocks/popup/__title-image/popup__title-image.css";
 @import "blocks/popup/__image/popup__image.css";
+@import "blocks/popup/__form-message-img/popup__form-message-img.css";
+@import "blocks/popup/__form-message-img/_success/popup__form-message-img_success.css";
+@import "blocks/popup/__form-message-text/popup__form-message-text.css";
+
+@import "blocks/sign/sign.css";
+@import "blocks/sign/__btn/sign__btn.css";
+@import "blocks/sign/__input/sign__input.css";
+@import "blocks/sign/__signature/sign__signature.css";
+@import "blocks/sign/__title/sign__title.css";
+@import "blocks/sign/__href/sign__href.css";

@@ -20,9 +20,9 @@ function PopupWithForm({handleClickClose, onClose, isOpen, name, title, onSubmit
       <div className="popup__container">
         <form onSubmit={onSubmit} className={`popup__form popup__form_type_${name}`} method="post">
           <button type="button" className="popup__close" onClick={onClose}/>
-          <h3 className="popup__title">{title}</h3>
+          {title ? <h3 className="popup__title">{title}</h3> : ''}
           {children}
-          <button type="submit" className="popup__btn">{buttonText}</button>
+          {buttonText ? <button type="submit" className="popup__btn">{buttonText}</button> : ''}
         </form>
       </div>
     </div>
